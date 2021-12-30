@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.snake.viewModels.ConfigViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundconfig"
+        tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/amita_bold"
+            android:onClick="cancelConf"
+            android:text="@string/ConfigCancelButton"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.267"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.594" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="104dp"
+            android:layout_height="25dp"
+            android:fontFamily="@font/amita_bold"
+            android:text="@string/configurations_button_main"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.179" />
+
+        <RadioGroup
+            android:id="@+id/Difficulty"
+            android:layout_width="244dp"
+            android:layout_height="130dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.259">
+
+            <RadioButton
+                android:id="@+id/Difficulty1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClickListener="@{() -> viewModel.changeDifficulty(1)}"
+                android:fontFamily="@font/amita_bold"
+                android:text="@string/easy_radius_config" />
+
+            <RadioButton
+                android:id="@+id/Difficulty2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClickListener="@{() -> viewModel.changeDifficulty(2)}"
+                android:fontFamily="@font/amita_bold"
+                android:text="@string/normal_radius_config" />
+
+            <RadioButton
+                android:id="@+id/Difficulty3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita_bold"
+                android:minHeight="48dp"
+                android:onClickListener="@{() -> viewModel.changeDifficulty(3)}"
+                android:text="@string/hard_radius_config"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="249dp"
+            android:layout_height="96dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.466">
+
+            <RadioButton
+                android:id="@+id/mapSize1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClickListener="@{() -> viewModel.changeMapSize(1)}"
+                android:fontFamily="@font/amita_bold"
+                android:text="@string/small_table_config" />
+
+            <RadioButton
+                android:id="@+id/mapSize2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita_bold"
+                android:onClickListener="@{() -> viewModel.changeMapSize(2)}"
+                android:text="@string/big_table_config" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/amita_bold"
+            android:onClick="confirmConf"
+            android:text="@string/ConfigConfirmButton"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.729"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.594" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
