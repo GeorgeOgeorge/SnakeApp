@@ -69,8 +69,9 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
         return false
     }
 
-    fun wallCollision(): Boolean {
-        return true
+    fun wallCollision() {
+        this.wallCollisionHeight()
+        this.wallCollisionWidth()
     }
 
     fun checkFruitCollision() : Boolean {
@@ -85,5 +86,19 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
     fun getFruitLocation(): Array<Int> { return this._fruit }
 
     fun updateScore() { this._score = this._score + (10 * this._scoreMultiplier) }
+
+    private fun wallCollisionWidth() {
+        if(this.getSnake().body[0][0] == this.getTableWidth())
+            this._snake.body[0][0] = 0
+        else
+            this._snake.body[0][0] = this.getTableWidth()
+    }
+
+    private fun wallCollisionHeight() {
+        if(this.getSnake().body[0][1] == this.getTableHeight())
+            this._snake.body[0][1] = 0
+        else
+            this._snake.body[0][1] = this.getTableHeight()
+    }
 
 }

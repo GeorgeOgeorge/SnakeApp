@@ -12,8 +12,6 @@ class GameViewModel : ViewModel() {
 
     fun changeSnakeDirection(direction: Int) {this.table.setSnakeDirection(direction)}
 
-    private fun snakeGrow() { this.table.snakeGrow() }
-
     fun checkCollision(): Boolean { return this.table.checkCollision() }
 
     fun checkFruit(): Boolean { return this.table.checkFruitCollision() }
@@ -22,10 +20,14 @@ class GameViewModel : ViewModel() {
 
     fun getScore(): String { return this.table.getScore().toString() }
 
+    fun snakeWallCollision() { this.table.wallCollision() }
+
     fun updateScore() {
         this.table.updateScore()
         this.table.spawnFruit()
         this.snakeGrow()
     }
+
+    private fun snakeGrow() { this.table.snakeGrow() }
 
 }

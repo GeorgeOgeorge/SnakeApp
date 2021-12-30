@@ -41,6 +41,7 @@ class GameActivity : AppCompatActivity() {
             rowCount = viewModel.gettable().getTableHeight()
             columnCount = viewModel.gettable().getTableWidth()
         }
+
         for (i in 0 until table.size) {
             for (j in 0 until table[0].size) {
                 table[i][j] = inflater.inflate(R.layout.table, grid, false) as ImageView
@@ -59,11 +60,11 @@ class GameActivity : AppCompatActivity() {
                     if (this.viewModel.checkCollision()) {
                         //chamar tela de resultado
                     } else {
+                        //checar se vitoria - checar controles - mostrar score
                         if (this.viewModel.checkFruit()) this.viewModel.updateScore()
-                        //checar se bateu na parede
-                        //checar se vitoria
+                        this.viewModel.snakeWallCollision()
+                        this.viewModel.snakeWalk()
                     }
-                    this.viewModel.snakeWalk()
                 }
             }
         }
