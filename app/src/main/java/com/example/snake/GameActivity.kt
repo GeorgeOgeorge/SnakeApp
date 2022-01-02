@@ -53,18 +53,18 @@ class GameActivity : AppCompatActivity() {
 
     private fun startGame(table: Array<Array<ImageView?>>) {
         thread {
-            while (true) {
-                Thread.sleep(200)
+            while (!this.isPaused) {
+                Thread.sleep(this.viewModel.gettable().getFrameRate().toLong())
                 runOnUiThread {
                     printTable(table)
-                    if (this.viewModel.checkCollision()) {
-                        //chamar tela de resultado
-                    } else {
-                        //checar se vitoria - checar controles - mostrar score
-                        if (this.viewModel.checkFruit()) this.viewModel.updateScore()
-                        this.viewModel.snakeWallCollision()
-                        this.viewModel.snakeWalk()
+                    if ( this.viewModel.checkCollision() ) {
+
+                    } else if ( this.viewModel.checkVictory() ) {
+                        //call result screen victory
                     }
+                    // checar controles - mostrar scor
+                    if (this.viewModel.checkFruit()) this.viewModel.updateScore()
+                    this.viewModel.snakeWalk()
                 }
             }
         }

@@ -22,6 +22,8 @@ class GameViewModel : ViewModel() {
 
     fun snakeWallCollision() { this.table.wallCollision() }
 
+    fun checkVictory(): Boolean { return this.table.checkVictory() }
+
     fun updateScore() {
         this.table.updateScore()
         this.table.spawnFruit()

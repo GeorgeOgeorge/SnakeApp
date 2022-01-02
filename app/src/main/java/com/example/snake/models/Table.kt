@@ -20,30 +20,31 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
     init {
         when(conf.getDifficulty()) {
             1 -> {
-                this._frameRate = 25
+                this._frameRate = 600
                 this._scoreMultiplier = 1.0
             }
             2 -> {
-                this._frameRate = 50
+                this._frameRate = 500
                 this._scoreMultiplier = 1.5
             }
             3 -> {
-                this._frameRate = 25
+                this._frameRate = 300
                 this._scoreMultiplier = 2.0
             }
         }
         when(conf.getMapSize()) {
             1 -> {
-                this._tableHeight = 25
-                this._tableWidth = 50
+                this._tableHeight = 20
+                this._tableWidth = 30
             }
             2 -> {
-                this._tableHeight = 50
-                this._tableWidth = 50
+                this._tableHeight = 20
+                this._tableWidth = 20
             }
         }
         this.table = Array(this._tableHeight){arrayOfNulls(this._tableWidth)}
         this.spawnFruit()
+        this.spawnSnake()
     }
 
     fun getTable(): Array<Array<ImageView?>> { return this.table }
@@ -54,11 +55,13 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
 
     fun setConf(conf: Conf) { this._conf = conf }
 
-    fun getScore() : Double { return this._score }
+    fun getScore(): Double { return this._score }
 
-    fun getTableHeight() : Int { return this._tableHeight }
+    fun getFrameRate(): Int { return this._frameRate }
 
-    fun getTableWidth() : Int { return this._tableWidth }
+    fun getTableHeight(): Int { return this._tableHeight }
+
+    fun getTableWidth(): Int { return this._tableWidth }
 
     fun setSnakeDirection(direction: Int) { this._snake.changeDirection(direction) }
 
@@ -79,26 +82,35 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
     }
 
     fun spawnFruit() {
-        this._fruit[0] = (0 until this.getTableWidth()).random()
-        this._fruit[1] = (0 until this.getTableHeight()).random()
+        this._fruit[0] = (0 until this.getTableWidth() - 1).random()
+        this._fruit[1] = (0 until this.getTableHeight() - 1).random()
+    }
+
+    fun checkVictory(): Boolean {
+        return (this.getTableHeight() * this.getTableWidth()) == this.getSnake().body.size
     }
 
     fun getFruitLocation(): Array<Int> { return this._fruit }
 
     fun updateScore() { this._score = this._score + (10 * this._scoreMultiplier) }
 
+    private fun spawnSnake() {
+        this._snake.body[0][0] = (0 until this.getTableWidth() - 1).random()
+        this._snake.body[0][1] = (0 until this.getTableHeight() - 1).random()
+    }
+
     private fun wallCollisionWidth() {
-        if(this.getSnake().body[0][0] == this.getTableWidth())
-            this._snake.body[0][0] = 0
+        if(this.getSnake().body[0][0] == this.getTableWidth() - 1)
+            this._snake.body[0][0] = 1
         else
-            this._snake.body[0][0] = this.getTableWidth()
+            this._snake.body[0][0] = this.getTableWidth() - 1
     }
 
     private fun wallCollisionHeight() {
-        if(this.getSnake().body[0][1] == this.getTableHeight())
-            this._snake.body[0][1] = 0
+        if(this.getSnake().body[0][1] == this.getTableHeight() - 1)
+            this._snake.body[0][1] = 1
         else
-            this._snake.body[0][1] = this.getTableHeight()
+            this._snake.body[0][1] = this.getTableHeight() - 1
     }
 
 }
