@@ -20,4 +20,5 @@
     <string name="finishButton">Finish Game</string>
     <string name="your_name">your name</string>
     <string name="snake_draw">snake</string>
+    <string name="high_score">HIGH SCORE</string>
 </resources>

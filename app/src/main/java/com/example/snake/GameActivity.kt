@@ -79,11 +79,10 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    fun pause(v: View) {
+    fun pauseGame(v: View) {
         setResult(Activity.RESULT_OK, Intent().apply {
-            putExtra("codPage", 3)
-            putExtra("gameStatus", false)
             putExtra("table", viewModel.table)
+            putExtra("codPage", 3)
         })
         finish()
     }

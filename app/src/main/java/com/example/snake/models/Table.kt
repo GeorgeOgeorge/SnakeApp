@@ -20,11 +20,11 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
     init {
         when(conf.getDifficulty()) {
             1 -> {
-                this._frameRate = 200
+                this._frameRate = 150
                 this._scoreMultiplier = 1.0
             }
             2 -> {
-                this._frameRate = 150
+                this._frameRate = 100
                 this._scoreMultiplier = 1.5
             }
             3 -> {
@@ -35,11 +35,11 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
         when(conf.getMapSize()) {
             1 -> {
                 this._tableHeight = 20
-                this._tableWidth = 30
+                this._tableWidth = 20
             }
             2 -> {
-                this._tableHeight = 20
-                this._tableWidth = 20
+                this._tableHeight = 30
+                this._tableWidth = 30
             }
         }
         this.table = Array(this._tableHeight){arrayOfNulls(this._tableWidth)}

@@ -13,4 +13,5 @@ class MainViewModel : ViewModel() {
     fun updateGame(table: Table) { this.table = table }
 
     fun createNewGame(conf: Conf) { this.table = Table(Snake(), conf) }
+
 }

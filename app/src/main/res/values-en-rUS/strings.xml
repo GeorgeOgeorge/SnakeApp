@@ -18,4 +18,8 @@
     <string name="score">Score:</string>
     <string name="pause">Pause</string>
     <string name="final_score">Final Score</string>
+    <string name="high_score">HIGH SCORE</string>
+    <string name="snake_draw">snake</string>
+    <string name="your_name">your name</string>
+    <string name="finishButton">Finish Game</string>
 </resources>

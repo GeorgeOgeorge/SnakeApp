@@ -18,4 +18,8 @@
     <string name="score">Pontuação:</string>
     <string name="pause">Parar</string>
     <string name="final_score">Pontuação Final</string>
+    <string name="high_score">RECORDE</string>
+    <string name="snake_draw">cobra</string>
+    <string name="your_name">seu nome</string>
+    <string name="finishButton">Fechar Jogo</string>
 </resources>
