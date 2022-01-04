@@ -15,4 +15,7 @@
     <string name="left">⬅</string>
     <string name="down">⬇</string>
     <string name="right">➡</string>
+    <string name="score">Score:</string>
+    <string name="pause">Pause</string>
+    <string name="final_score">Final Score</string>
 </resources>

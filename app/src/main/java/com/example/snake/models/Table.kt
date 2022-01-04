@@ -20,15 +20,15 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
     init {
         when(conf.getDifficulty()) {
             1 -> {
-                this._frameRate = 600
+                this._frameRate = 200
                 this._scoreMultiplier = 1.0
             }
             2 -> {
-                this._frameRate = 500
+                this._frameRate = 150
                 this._scoreMultiplier = 1.5
             }
             3 -> {
-                this._frameRate = 300
+                this._frameRate = 50
                 this._scoreMultiplier = 2.0
             }
         }
@@ -68,7 +68,9 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
     fun snakeGrow() { this._snake.grow() }
 
     fun checkCollision(): Boolean {
-        if(this._snake.body.subList(1,this._snake.body.size).contains(this._snake.body[0])) return true
+        this._snake.body.subList(1,this._snake.body.size).forEach{
+            if(it.contentEquals(this._snake.body[0])) return true
+        }
         return false
     }
 
@@ -100,16 +102,16 @@ class Table(snake: Snake = Snake(), conf: Conf = Conf()) : Serializable {
     }
 
     private fun wallCollisionWidth() {
-        if(this.getSnake().body[0][0] == this.getTableWidth() - 1)
-            this._snake.body[0][0] = 1
-        else
+        if(this.getSnake().body[0][0] >= this.getTableWidth())
+            this._snake.body[0][0] = 0
+        else if(this.getSnake().body[0][0] < 0)
             this._snake.body[0][0] = this.getTableWidth() - 1
     }
 
     private fun wallCollisionHeight() {
-        if(this.getSnake().body[0][1] == this.getTableHeight() - 1)
-            this._snake.body[0][1] = 1
-        else
+        if(this.getSnake().body[0][1] >= this.getTableHeight())
+            this._snake.body[0][1] = 0
+        else if(this.getSnake().body[0][1] < 0)
             this._snake.body[0][1] = this.getTableHeight() - 1
     }
 

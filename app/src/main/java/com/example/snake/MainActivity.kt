@@ -4,13 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.snake.databinding.ActivityMainBinding
 import com.example.snake.models.Conf
+import com.example.snake.models.Table
 import com.example.snake.viewModels.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -20,11 +20,8 @@ class MainActivity : AppCompatActivity() {
     private val activityForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) when (it.data?.extras?.get("codPage")) {
-                1 -> {}
-
                 2 -> this.viewModel.createNewGame(it.data!!.extras!!.get("conf") as Conf)
-            } else {
-                Toast.makeText(this, "canceled", Toast.LENGTH_LONG).show()
+                3 -> this.viewModel.updateGame(it.data!!.extras!!.get("table") as Table)
             }
         }
 
@@ -61,15 +58,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun openNewGame(v: View) {
+    fun openGame(v: View) {
         this.activityForResult.launch(
             Intent(this, GameActivity::class.java).apply {
                 putExtra("table", viewModel.table)
             }
         )
     }
-
-    fun openContinue(v: View) {}
 
     fun openConfig(v: View) {
         this.activityForResult.launch(
@@ -78,4 +73,7 @@ class MainActivity : AppCompatActivity() {
             }
         )
     }
+
+    //fazer placar de maior na tela inicial
+    //corrigir continuar
 }

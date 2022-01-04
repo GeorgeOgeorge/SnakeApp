@@ -15,4 +15,7 @@
     <string name="left">⬅</string>
     <string name="down">⬇</string>
     <string name="right">➡</string>
+    <string name="score">Pontuação:</string>
+    <string name="pause">Parar</string>
+    <string name="final_score">Pontuação Final</string>
 </resources>

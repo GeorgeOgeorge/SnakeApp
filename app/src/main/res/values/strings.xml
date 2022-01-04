@@ -16,4 +16,8 @@
     <string name="right">➡</string>
     <string name="score">Score:</string>
     <string name="pause">PAUSE</string>
+    <string name="final_score">Final Score</string>
+    <string name="finishButton">Finish Game</string>
+    <string name="your_name">your name</string>
+    <string name="snake_draw">snake</string>
 </resources>

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.snake.models.Table
 
 class GameViewModel : ViewModel() {
-    private lateinit var table: Table
+    lateinit var table: Table
 
     fun updateTable(table: Table) { this.table = table }
 

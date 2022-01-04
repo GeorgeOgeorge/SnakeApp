@@ -10,8 +10,7 @@ class MainViewModel : ViewModel() {
 
     fun updateConf(conf: Conf) { this.table.setConf(conf) }
 
-    fun createNewGame(conf: Conf) {
-        this.table = Table(Snake(), conf)
-    }
+    fun updateGame(table: Table) { this.table = table }
 
+    fun createNewGame(conf: Conf) { this.table = Table(Snake(), conf) }
 }
